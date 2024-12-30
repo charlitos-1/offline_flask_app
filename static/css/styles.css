@@ -1,106 +1,202 @@
 /* General Body Styling */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
-/* Page Title */
 h1 {
     margin-top: 20px;
-    color: #333;
+    font-size: 28px;
+    color: #007bff;
+    text-shadow: 1px 1px 2px #ccc;
+}
+
+/* Container for Sections */
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 /* Form Styling */
 form {
-    margin: 20px auto;
-    padding: 20px;
-    width: 300px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 form label {
-    width: 100%;
-    margin: 5px 0 0;
     font-weight: bold;
-    text-align: left;
+    margin: 8px 0 4px;
+    font-size: 14px;
+    align-self: flex-start;
+    color: #555;
 }
 
 form input {
     width: 100%;
-    padding: 8px;
-    margin: 5px 0 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* Script Button Section */
-.script-buttons {
-    margin: 20px auto;
-    padding: 20px;
-    width: 300px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.script-buttons h2 {
+    max-width: 400px;
+    padding: 10px;
     margin-bottom: 15px;
-    font-size: 18px;
-    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-.script-buttons button {
-    padding: 10px 20px;
-    margin: 5px;
+form button {
     background-color: #007bff;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Drag-and-Drop Styling */
+#drop-area {
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    padding: 30px;
+    background-color: #f4f9ff;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
     cursor: pointer;
 }
 
-.script-buttons button:hover {
-    background-color: #0056b3;
+#drop-area:hover {
+    background-color: #e6f2ff;
+    border-color: #0056b3;
+}
+
+#drop-area h2,
+#drop-area p {
+    margin: 5px 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* JSON Preview Section */
+#json-preview {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+    max-width: 700px;
+}
+
+#json-preview h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+#parsed-data {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+#confirm-json-button {
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#confirm-json-button:hover {
+    background-color: #218838;
 }
 
 /* Output Section */
 pre {
-    text-align: left;
-    margin: 20px auto;
-    padding: 10px;
-    width: 80%;
-    max-width: 500px;
-    background-color: #fff;
+    background-color: #f8f9fa;
     border: 1px solid #ddd;
     border-radius: 5px;
-    overflow: auto;
+    padding: 15px;
+    text-align: left;
+    max-width: 700px;
+    margin: 20px auto;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    overflow-x: auto;
 }
 
-/* Refresh Data Button */
+/* Refresh Button */
 #refresh-data-button {
-    margin: 10px;
+    display: inline-block;
+    background-color: #ffc107;
+    color: #212529;
     padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
     border: none;
     border-radius: 5px;
+    font-size: 14px;
     cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
 #refresh-data-button:hover {
-    background-color: #218838;
+    background-color: #e0a800;
+}
+
+/* Buttons for Script Execution */
+.script-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.script-buttons h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.script-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.script-buttons button:hover {
+    background-color: #0056b3;
 }

@@ -1,5 +1,4 @@
 import sqlite3
-import pandas as pd
 import os
 
 
@@ -31,7 +30,7 @@ def initialize_database(db_file, table_name="generic_table"):
 
 
 def add_row(db_file, table_name, row_data):
-    """Adds a new row to a specified table."""
+    """Adds a single row to the table."""
     conn = get_db_connection(db_file)
     cursor = conn.cursor()
     columns = ", ".join(row_data.keys())

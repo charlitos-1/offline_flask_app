@@ -39,7 +39,6 @@ def run_script():
 def get_data():
     """Retrieve all data from a table."""
     table_name = request.args.get("table_name", "generic_table")
-
     conn = db_helper.get_db_connection(DB_FILE)
     query = f"SELECT * FROM {table_name}"
     data = pd.read_sql_query(query, conn)
@@ -49,13 +48,23 @@ def get_data():
 
 @app.route("/add-row", methods=["POST"])
 def add_row():
-    """Add a new row to a specified table."""
+    """Add a single row to the table."""
     table_name = request.json.get("table_name", "generic_table")
-    row_data = request.json.get(
-        "row_data", {}
-    )  # Example: {"title": "Task 1", "field1": "Value1"}
+    row_data = request.json.get("row_data", {})
     db_helper.add_row(DB_FILE, table_name, row_data)
     return jsonify({"status": "success", "message": f"Row added to {table_name}"})
+
+
+@app.route("/add-rows", methods=["POST"])
+def add_rows():
+    """Add multiple rows to the table."""
+    table_name = request.json.get("table_name", "generic_table")
+    rows = request.json.get("rows", [])
+    for row in rows:
+        db_helper.add_row(DB_FILE, table_name, row)
+    return jsonify(
+        {"status": "success", "message": f"{len(rows)} rows added to {table_name}"}
+    )
 
 
 if __name__ == "__main__":

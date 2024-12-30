@@ -10,7 +10,7 @@
     <h1>Generic Table Manager</h1>
 
     <div class="container">
-      <!-- Form to Add Data -->
+      <!-- Form to Add a Row -->
       <form id="add-row-form">
         <label for="title">Title:</label>
         <input
@@ -48,15 +48,18 @@
         <button type="submit">Add Row</button>
       </form>
 
-      <!-- Section to Run Python Scripts -->
-      <div class="script-buttons">
-        <h2>Run Python Scripts</h2>
-        <button class="script-button" data-script="example_script1.py">
-          Run Script 1
-        </button>
-        <button class="script-button" data-script="example_script2.py">
-          Run Script 2
-        </button>
+      <!-- Drag-and-Drop JSON Upload -->
+      <div id="drop-area">
+        <h2>Drag and Drop a JSON File Here</h2>
+        <p>Or click to upload</p>
+      </div>
+      <input type="file" id="file-input" accept=".json" style="display: none" />
+
+      <!-- JSON Preview -->
+      <div id="json-preview" style="display: none">
+        <h3>Parsed JSON Data</h3>
+        <pre id="parsed-data"></pre>
+        <button id="confirm-json-button">Confirm and Add to Database</button>
       </div>
 
       <!-- Output Section -->
