@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline Flask App</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <h1>Offline Web App</h1>
+
+    <div>
+      <button onclick="runScript()">Run Script</button>
+      <button onclick="fetchData()">Fetch Data</button>
+    </div>
+
+    <form id="add-user-form">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="number" name="age" placeholder="Age" required />
+      <button type="submit">Add User</button>
+    </form>
+
+    <pre id="output"></pre>
+
+    <script src="/static/js/scripts.js"></script>
+  </body>
+</html>

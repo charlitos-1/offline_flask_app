@@ -1,0 +1,15 @@
+pandas
+Flask
+
+blinker
+click
+colorama
+itsdangerous
+Jinja2
+MarkupSafe
+numpy
+python-dateutil
+pytz
+six
+tzdata
+Werkzeug
