@@ -7,8 +7,14 @@ app = Flask(__name__)
 # Path to the database file
 DB_FILE = "data.db"
 
-# Ensure the database is initialized
-db_helper.initialize_database(DB_FILE)
+
+def main():
+    """Main entry point of the application."""
+    # Ensure the database is initialized
+    db_helper.initialize_database(DB_FILE)
+
+    # Start the Flask application
+    app.run(host="0.0.0.0", port=5000)
 
 
 @app.route("/")
@@ -90,10 +96,6 @@ def remove_column():
             "message": f"Column {column_name} removed from {table_name}",
         }
     )
-
-
-def main():
-    app.run(host="0.0.0.0", port=5000)
 
 
 if __name__ == "__main__":
