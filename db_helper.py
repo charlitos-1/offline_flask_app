@@ -10,7 +10,7 @@ def get_db_connection(db_file):
 
 
 def initialize_database(db_file, table_name="generic_table"):
-    """Initializes the database with a generic table."""
+    """Initializes the database with a default table."""
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
     cursor.execute(
@@ -30,7 +30,7 @@ def initialize_database(db_file, table_name="generic_table"):
 
 
 def add_row(db_file, table_name, row_data):
-    """Adds a single row to the table."""
+    """Adds a single row to the specified table."""
     conn = get_db_connection(db_file)
     cursor = conn.cursor()
     columns = ", ".join(row_data.keys())

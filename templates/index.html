@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generic Table App</title>
+    <!-- Link to external CSS for styling -->
     <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
   <body>
     <h1>Generic Table Manager</h1>
 
     <div class="container">
-      <!-- Form to Add a Row -->
+      <!-- Form to add a single row -->
       <form id="add-row-form">
         <label for="title">Title:</label>
         <input
@@ -48,25 +49,27 @@
         <button type="submit">Add Row</button>
       </form>
 
-      <!-- Drag-and-Drop JSON Upload -->
+      <!-- Section for drag-and-drop JSON file upload -->
       <div id="drop-area">
         <h2>Drag and Drop a JSON File Here</h2>
         <p>Or click to upload</p>
       </div>
       <input type="file" id="file-input" accept=".json" style="display: none" />
 
-      <!-- JSON Preview -->
+      <!-- JSON preview section -->
       <div id="json-preview" style="display: none">
         <h3>Parsed JSON Data</h3>
         <pre id="parsed-data"></pre>
         <button id="confirm-json-button">Confirm and Add to Database</button>
+        <button id="cancel-json-button">Cancel</button>
       </div>
 
-      <!-- Output Section -->
+      <!-- Section to display output data -->
       <pre id="output"></pre>
       <button id="refresh-data-button">Refresh Data</button>
     </div>
 
+    <!-- Link to external JavaScript file -->
     <script src="/static/js/scripts.js"></script>
   </body>
 </html>

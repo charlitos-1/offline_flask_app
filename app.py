@@ -11,7 +11,7 @@ DB_FILE = "data.db"
 
 def main():
     """Main entry point of the application."""
-    # Ensure the database is initialized with a generic table
+    # Initialize the database with the default table if not already present
     db_helper.initialize_database(DB_FILE, table_name="generic_table")
     app.run(host="0.0.0.0", port=5000)
 
@@ -24,7 +24,7 @@ def index():
 
 @app.route("/run-script", methods=["POST"])
 def run_script():
-    """Run a Python script and return its output."""
+    """Run a Python script from the 'scripts' directory and return its output."""
     script_name = request.json.get("script_name")
     try:
         result = subprocess.run(
@@ -37,7 +37,7 @@ def run_script():
 
 @app.route("/get-data", methods=["GET"])
 def get_data():
-    """Retrieve all data from a table."""
+    """Retrieve all data from the specified table in the database."""
     table_name = request.args.get("table_name", "generic_table")
     conn = db_helper.get_db_connection(DB_FILE)
     query = f"SELECT * FROM {table_name}"
@@ -48,7 +48,7 @@ def get_data():
 
 @app.route("/add-row", methods=["POST"])
 def add_row():
-    """Add a single row to the table."""
+    """Add a single row to the specified table in the database."""
     table_name = request.json.get("table_name", "generic_table")
     row_data = request.json.get("row_data", {})
     db_helper.add_row(DB_FILE, table_name, row_data)
@@ -57,7 +57,7 @@ def add_row():
 
 @app.route("/add-rows", methods=["POST"])
 def add_rows():
-    """Add multiple rows to the table."""
+    """Add multiple rows to the specified table in the database."""
     table_name = request.json.get("table_name", "generic_table")
     rows = request.json.get("rows", [])
     for row in rows:
