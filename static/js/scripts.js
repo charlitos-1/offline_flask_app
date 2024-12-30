@@ -38,6 +38,30 @@ document.getElementById('add-row-form').addEventListener('submit', async (e) => 
     fetchData();
 });
 
+// Function to handle script buttons
+document.querySelectorAll('.script-button').forEach(button => {
+    button.addEventListener('click', async () => {
+        const scriptName = button.dataset.script;
+
+        // Send the request to run the script
+        const response = await fetch('/run-script', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ script_name: scriptName }),
+        });
+
+        // Handle the response
+        const result = await response.json();
+        const output = result.output || result.error;
+        document.getElementById('output').innerText = output;
+    });
+});
+
+// Add event listener for "Refresh Data" button
+document.getElementById('refresh-data-button').addEventListener('click', async () => {
+    await fetchData();
+});
+
 // Automatically fetch data on page load
 window.onload = async () => {
     await fetchData();
